@@ -98,13 +98,16 @@ window.addEventListener('DOMContentLoaded', () => {
           modalCloseBtn = document.querySelector('[data-close]');
 
     modalTrigger.forEach(btn => {
-        btn.addEventListener('click', () => {
-            modal.classList.add('show');    
-            modal.classList.remove('hide');
-            document.body.style.overflow = 'hidden'; // restrict scrolling while modal window is opened   
-        });
+        btn.addEventListener('click', openModal);
     });
-    
+
+    function openModal() {
+        modal.classList.add('show');    
+        modal.classList.remove('hide');  
+        document.body.style.overflow = 'hidden'; // restrict scrolling while modal window is opened  
+        clearInterval(modalTimerId); // don't open modal window if user has opened it by himeslf  
+    }
+
     function closeModal() {
         modal.classList.add('hide');    
         modal.classList.remove('show');  
@@ -125,5 +128,16 @@ window.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+
+    //const modalTimerId = setTimeout(openModal, 4000); // open modal window in 3s
+
+    function showModalByScroll() {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+            openModal();
+            window.removeEventListener('scroll', showModalByScroll);
+        }
+    }
+    
+    window.addEventListener('scroll', showModalByScroll);
 
 });
