@@ -1,3 +1,7 @@
+
+const HOST = window.location.href;
+const processURL = HOST + 'create';
+
 window.addEventListener('DOMContentLoaded', () => {
     // Tabs
     const tabs = document.querySelectorAll('.tabheader__item'),
@@ -137,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
             window.removeEventListener('scroll', showModalByScroll);
         }
     }
-    
+
     window.addEventListener('scroll', showModalByScroll);
 
 });
