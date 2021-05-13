@@ -1,4 +1,4 @@
-# js_food_website
+# JavaScript training project
 
 todo:
 
