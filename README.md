@@ -1,4 +1,4 @@
-# JavaScript training project
+# JavaScript training project (in process)
 
 todo:
 
